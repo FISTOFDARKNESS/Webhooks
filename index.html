@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Navegador Personalizado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      background-color: #262626;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      width: 400px;
+      margin-right: 10px;
+      border-bottom: 2px solid #33cc33;
+    }
+
+    button:disabled {
+      background-color: #1a1a1a;
+      color: #444;
+      cursor: not-allowed;
+    }
+
+    button:enabled {
+      background-color: #33cc33;
+    }
+
+    button:hover {
+      background-color: #66ff66;
+    }
+  </style>
+  <script>
+    function verificarURL() {
+      var url = document.getElementById("url").value;
+      var entrarBtn = document.getElementById("entrar");
+
+      var isValidURL = url.startsWith("https://") || url.startsWith("www");
+
+      entrarBtn.disabled = !isValidURL;
+    }
+
+    function entrar() {
+      var url = document.getElementById("url").value;
+      if (url !== "") {
+        window.location.href = url;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Meu Navegador Personalizado</h2>
+    <div class="input-container">
+      <input type="text" id="url" oninput="verificarURL()" placeholder="Digite a URL">
+      <button id="entrar" disabled onclick="entrar()">Entrar</button>
+    </div>
+  </div>
+</body>
+</html>
